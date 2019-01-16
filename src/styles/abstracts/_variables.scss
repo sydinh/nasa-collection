@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// @type Paths
+$img-url: '../images';
+
+/// @type Font family
+$font-family-base: 'Open Sans', sans-serif;
+
+/// @type Font size
+$font-size-base: 14px;
+
+/// @type Font weight
+$font-weight-light: 300;
+
+/// @type Color
+$white: #fff;
+$black: #000;
+
+/// @type Borders
+$border-radius-hack: 100px;
+
+/// @type Positions
+$z-indexes: (
+  base: 1,
+  under: -1,
+  upper: 2,
+);
+
+/// @type Breakpoints
+$breakpoints: (
+  'desktop': (
+    max-width: 1199.98px,
+  ),
+  'tablet': (
+    max-width: 991.98px,
+  ),
+  'phone': (
+    max-width: 767.98px,
+  ),
+  'smallphone': (
+    max-width: 575.98px,
+  ),
+  'extra-smallphone': (
+    max-width: 320px,
+  ),
+);
