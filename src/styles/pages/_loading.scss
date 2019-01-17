@@ -1,3 +1,84 @@
 // -----------------------------------------------------------------------------
-// This file contains styles that are specific to the loading page.
+// This file contains styles that are specific to the Loading page.
 // -----------------------------------------------------------------------------
+
+.loading {
+  @include flexbox-centering;
+
+  &--search {
+    min-height: 200px;
+  }
+
+  &__dot-floating {
+    @include square(10px);
+    position: relative;
+    border-radius: $border-radius-medium;
+    background: $loading-background;
+    color: $loading-color;
+    animation: dotFloating 3s infinite cubic-bezier(0.15, 0.6, 0.9, 0.1);
+
+    &:before,
+    &:after {
+      @include square(10px);
+      content: '';
+      position: absolute;
+      top: 0;
+      display: inline-block;
+      border-radius: $border-radius-medium;
+      background: $loading-background;
+      color: $loading-color;
+    }
+
+    &:before {
+      left: -12px;
+      animation: dotFloatingBefore 3s infinite ease-in-out;
+    }
+
+    &:after {
+      left: -24px;
+      animation: dotFloatingAfter 3s infinite cubic-bezier(0.4, 0, 1, 1);
+    }
+  }
+}
+
+@keyframes dotFloating {
+  0% {
+    left: calc(-50% - 5px);
+  }
+  75% {
+    left: calc(50% + 105px);
+  }
+  100% {
+    left: calc(50% + 105px);
+  }
+}
+
+@keyframes dotFloatingBefore {
+  0% {
+    left: -50px;
+  }
+  50% {
+    left: -12px;
+  }
+  75% {
+    left: -50px;
+  }
+  100% {
+    left: -50px;
+  }
+}
+
+@keyframes dotFloatingAfter {
+  0% {
+    left: -100px;
+  }
+  50% {
+    left: -24px;
+  }
+  75% {
+    left: -100px;
+  }
+  100% {
+    left: -100px;
+  }
+}

@@ -6,7 +6,7 @@ const Button = props => (
     type={props.type}
     onClick={props.onClick}
     disabled={props.disabled}
-    className={props.className}
+    className={`button ${props.className}`}
   >
     {Children.toArray(props.children)}
   </button>

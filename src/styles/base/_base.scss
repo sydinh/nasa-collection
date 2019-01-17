@@ -27,7 +27,8 @@ html {
 body {
   background: $white;
   font-size: $font-size-base;
-  font-family: Helvetica, 'Segoe UI', Arial, sans-serif;
+  font-family: $font-family-base;
+  font-weight: $font-weight-regular;
 }
 
 /**
@@ -35,12 +36,7 @@ body {
  */
 a {
   @include transition;
-  color: $black;
   text-decoration: none;
-
-  @include on-event {
-    color: $black;
-  }
 }
 
 /**
@@ -49,4 +45,8 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+figure {
+  margin: 0;
 }

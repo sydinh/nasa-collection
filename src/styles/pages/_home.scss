@@ -1,3 +1,22 @@
 // -----------------------------------------------------------------------------
-// This file contains styles that are specific to the home page.
+// This file contains styles that are specific to the Home page.
 // -----------------------------------------------------------------------------
+
+.home {
+  &__header {
+    @include flexbox-centering-vertical;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__title-inner {
+    color: $black;
+    font-size: 50px;
+    font-weight: $font-weight-bold;
+    letter-spacing: -1px;
+    opacity: 0.3;
+  }
+}

@@ -1,5 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const Loading = () => <h1>Loading...</h1>;
+import Main from 'components/Main';
+
+const Loading = ({ isSearching }) => {
+  const loadingClass = classNames({
+    loading: true,
+    'loading--search': isSearching,
+  });
+
+  return (
+    <Main page={loadingClass}>
+      <div className="loading__dot-floating" />
+    </Main>
+  );
+};
+
+Loading.propTypes = {
+  isSearching: PropTypes.bool,
+};
+
+Loading.defaultProps = {
+  isSearching: false,
+};
 
 export default Loading;

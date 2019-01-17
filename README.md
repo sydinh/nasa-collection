@@ -30,6 +30,7 @@ npm run build-dev
 
 ## Tech stack
 
+- axios
 - classnames
 - connected-react-router
 - immutable
@@ -43,14 +44,22 @@ npm run build-dev
 - ducks-modular-redux
 - SASS
 - Firebase
+- html5-boilerplate
 
 ## References
 
 #### ImmutableJS
 
 - https://redux.js.org/recipes/using-immutablejs-with-redux
-
 - https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/immutablejs.md
+
+#### ducks-modular-redux
+
+- https://github.com/erikras/ducks-modular-redux
+
+#### html5-boilerplate
+
+- https://github.com/h5bp/html5-boilerplate
 
 ## Tools
 

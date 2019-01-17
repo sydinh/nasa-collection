@@ -1,3 +1,21 @@
 // -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
+// This file contains all styles related to the Buttons component.
 // -----------------------------------------------------------------------------
+
+.button {
+  @include transition;
+  outline: 0;
+  padding: 10px 15px;
+  border-radius: $border-radius-base;
+  background: #784cc0;
+  color: $white;
+  letter-spacing: 0.11px;
+
+  &:hover {
+    background: #976be2;
+  }
+
+  &:focus {
+    background: #5d3999;
+  }
+}

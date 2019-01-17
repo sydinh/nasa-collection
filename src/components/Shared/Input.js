@@ -8,7 +8,7 @@ const Input = props => (
     value={props.value}
     onChange={props.onChange}
     placeholder={props.placeholder}
-    className={props.className}
+    className={`form-control ${props.className}`}
   />
 );
 
