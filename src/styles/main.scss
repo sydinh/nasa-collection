@@ -2,8 +2,8 @@
 
 // 1. Configuration and helpers
 @import 'abstracts/variables';
-@import 'abstracts/mixins';
 @import 'abstracts/functions';
+@import 'abstracts/mixins';
 
 // 2. Vendors
 @import '../../node_modules/normalize.css/normalize.css';
@@ -17,11 +17,12 @@
 // 5. Components
 @import 'components/buttons';
 @import 'components/forms';
+@import 'components/cards';
 
 // 6. Page-specific styles
+@import 'pages/loading';
 @import 'pages/home';
 @import 'pages/search';
-@import 'pages/notfound';
-@import 'pages/loading';
+@import 'pages/not-found';
 
 // 7. Themes

@@ -2,7 +2,7 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
-/// @type Position
+// Positioning
 @mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
   position: $position;
   top: $top;
@@ -40,45 +40,38 @@
   border-radius: 50%;
 }
 
-/// @type Text and Color
-@mixin on-event($self: false) {
-  @if $self {
-    &,
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
-  } @else {
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
-  }
-}
-
 /// @type Other
 @mixin transition($what: all, $time: 0.5s, $how: ease-out) {
   transition: $what $time $how;
 }
 
-@mixin list-unstyled() {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+/// Truncate text multiline
+/// @param {string} $line-height - Line height of text
+/// @param {number} $line-count - Number of line
+/// @param {string} $bg-color - Background color of text
+@mixin truncate-multiline($line-height: 1.2em, $line-count: 1, $bg-color: $white) {
+  overflow: hidden;
+  position: relative;
+  line-height: $line-height;
+  max-height: $line-height * $line-count;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
 
-@mixin breakpoint-down($breakpoint) {
-  $raw-query: map-get($breakpoints, $breakpoint);
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
 
-  @if $raw-query {
-    $query: if(type-of($raw-query) == 'string', unquote($raw-query), inspect($raw-query));
-
-    @media #{$query} {
-      @content;
-    }
-  } @else {
-    @error 'No value found for `#{$breakpoint}`. ' + 'Please make sure it is defined in `$breakpoints` map.';
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bg-color;
   }
 }

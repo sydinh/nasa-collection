@@ -6,43 +6,39 @@
 $img-url: '../images';
 
 /// @type Font family
-$font-family-base: 'Open Sans', sans-serif;
+$font-family-base: Helvetica, 'Segoe UI', Arial, sans-serif;
 
 /// @type Font size
+$font-size-small: 12px;
 $font-size-base: 14px;
+$font-size-medium: 16px;
+$h1: 36px;
+$h2: 28px;
+$h3: 24px;
+$h4: 18px;
+$h5: 14px;
+$h6: 12px;
 
 /// @type Font weight
-$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
 
 /// @type Color
 $white: #fff;
 $black: #000;
 
 /// @type Borders
+$border-radius-base: 3px;
+$border-radius-medium: 5px;
 $border-radius-hack: 100px;
 
-/// @type Positions
+/// @type Components
+$loading-color: #9880ff;
+$loading-background: $loading-color;
+
+// Positions
 $z-indexes: (
   base: 1,
   under: -1,
   upper: 2,
-);
-
-/// @type Breakpoints
-$breakpoints: (
-  'desktop': (
-    max-width: 1199.98px,
-  ),
-  'tablet': (
-    max-width: 991.98px,
-  ),
-  'phone': (
-    max-width: 767.98px,
-  ),
-  'smallphone': (
-    max-width: 575.98px,
-  ),
-  'extra-smallphone': (
-    max-width: 320px,
-  ),
 );

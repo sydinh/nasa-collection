@@ -1,0 +1,35 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the 404 page.
+// -----------------------------------------------------------------------------
+
+.not-found {
+  @include flexbox-centering;
+  flex-direction: column;
+
+  &__title,
+  &__subtitle {
+    margin: 0;
+    color: rgba($black, 0.75);
+  }
+
+  &__title {
+    font-size: 200px;
+  }
+
+  &__subtitle {
+    font-size: 50px;
+  }
+
+  &__desc {
+    margin: 20px 0;
+    color: #83838d;
+  }
+
+  &__link {
+    margin: 0;
+    color: #784cc0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    cursor: pointer;
+  }
+}

@@ -1,2 +1,2 @@
-export const NASA_COLLECTION = '/';
-export const NASA_SEARCH = '/nasa-search';
+export const HOME = '/';
+export const SEARCH = '/nasa-search';
