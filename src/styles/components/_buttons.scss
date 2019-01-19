@@ -10,6 +10,7 @@
   background: #784cc0;
   color: $white;
   letter-spacing: 0.11px;
+  cursor: pointer;
 
   &:hover {
     background: #976be2;
@@ -17,5 +18,23 @@
 
   &:focus {
     background: #5d3999;
+  }
+
+  &--primary {
+    padding: 15px;
+    background: transparent;
+    border: 1px solid;
+    border-color: #ceced2;
+    color: rgba($black, 0.4);
+    font-size: $font-size-small;
+    font-weight: $font-weight-regular;
+    letter-spacing: 0.09px;
+
+    &:hover,
+    &:focus {
+      color: $black;
+      border-color: $black;
+      background: transparent;
+    }
   }
 }

@@ -26,7 +26,7 @@
   }
 
   &__list-title {
-    margin: 0 0 19px;
+    margin: 0 0 14px;
     color: $black;
     font-size: $font-size-small;
     letter-spacing: 0.09px;
@@ -40,6 +40,6 @@
 
   &__list-column {
     width: calc(20% - 30px);
-    margin: 15px;
+    margin: 20px 15px;
   }
 }
