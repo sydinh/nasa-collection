@@ -3,17 +3,20 @@ import React from 'react';
 import NasaCard from 'components/Cards/NasaCard';
 import { IMG_REGEX, IMG_PLACEHOLDER } from '../constants';
 
-const List = ({ collection, searchTerm }) => {
-  if (collection.length === 0) return null;
+const List = props => {
+  if (props.collection.length === 0) return null;
 
-  const { items: collectionItems } = collection;
-  const { total_hits: totalHits } = collection.metadata;
+  const { items: collectionItems } = props.collection;
 
   return (
     <div className="search__list">
-      <p className="search__list-title">
-        {totalHits} {totalHits > 2 ? 'results' : 'result'} for “{searchTerm}”
-      </p>
+      {props.metaData && (
+        <p className="search__list-title">
+          {props.metaData.total_hits} {props.metaData.total_hits > 2 ? 'results' : 'result'} for “
+          {props.searchTerm}”
+        </p>
+      )}
+
       <div className="search__list-row">
         {collectionItems && collectionItems.map(data => renderCollectionItems(data))}
       </div>
