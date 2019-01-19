@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
@@ -11,16 +12,19 @@ import Loading from 'components/Loading';
 import Form from './components/Form';
 import List from './components/List';
 
-const API = 'https://images-api.nasa.gov/search?q=';
+import {
+  searchCollection,
+  getCollection,
+  getCollectionLoading,
+  getCollectionError,
+  getCollectionMetaData,
+} from 'modules/collection';
 
 class SearchContainer extends Component {
   constructor() {
     super();
     this.state = {
       searchTerm: '',
-      isLoading: false,
-      collection: [],
-      error: null,
     };
   }
 
@@ -31,32 +35,14 @@ class SearchContainer extends Component {
   };
 
   handleSubmit = event => {
+    const data = this.state.searchTerm.toLowerCase();
+    this.props.searchCollection(data);
     event.preventDefault();
-    this.setState({ isLoading: true });
-    this.searchCollection();
-  };
-
-  searchCollection = () => {
-    const QUERY = this.state.searchTerm.toLowerCase();
-
-    return axios
-      .get(API + QUERY)
-      .then(result =>
-        this.setState({
-          isLoading: false,
-          collection: result.data.collection,
-        }),
-      )
-      .catch(error =>
-        this.setState({
-          isLoading: false,
-          error: error,
-        }),
-      );
   };
 
   render() {
-    const { searchTerm, isLoading } = this.state;
+    const { searchTerm } = this.state;
+    const { collection, isLoading, error, metaData } = this.props;
 
     return (
       <Fragment>
@@ -74,11 +60,29 @@ class SearchContainer extends Component {
             handleSubmit={this.handleSubmit}
           />
           {isLoading && <Loading isSearching />}
-          <List searchTerm={searchTerm} collection={this.state.collection} />
+          {error && <p>Error</p>}
+          <List searchTerm={searchTerm} collection={collection} metaData={metaData} />
         </Main>
       </Fragment>
     );
   }
 }
 
-export default withScrollToTopOnMount(SearchContainer);
+const mapStateToProps = ({ collection }) => ({
+  collection: getCollection(collection),
+  isLoading: getCollectionLoading(collection),
+  error: getCollectionError(collection),
+  metaData: getCollectionMetaData(collection),
+});
+
+const mapDispatchToProps = { searchCollection };
+
+const withRedux = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withRedux,
+  withScrollToTopOnMount,
+)(SearchContainer);

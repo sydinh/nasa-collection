@@ -40,6 +40,8 @@ npm run build-dev
 - react-dom
 - react-router-dom
 - redux
+- redux-thunk
+- reselect
 - react-redux
 - ducks-modular-redux
 - SASS
