@@ -25,7 +25,8 @@
     border-color: #83838d;
   }
 
-  &:focus {
+  &:focus,
+  &:active {
     opacity: 1;
     border-color: rgba(131, 131, 141, 0.99);
   }

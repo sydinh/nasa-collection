@@ -16,37 +16,36 @@ const List = props => {
           {props.searchTerm}”
         </p>
       )}
-
       <div className="search__list-row">
-        {collectionItems && collectionItems.map(data => renderCollectionItems(data))}
+        {collectionItems &&
+          collectionItems.map(data => {
+            const nasaData = data.data[0];
+            const nasaLinks = data.links[0];
+            const href = nasaLinks.href;
+
+            let imgUrl = '';
+            if (IMG_REGEX.test(href)) {
+              imgUrl = href;
+            } else {
+              imgUrl = IMG_PLACEHOLDER;
+            }
+
+            return (
+              <div className="search__list-column" key={nasaData.nasa_id}>
+                <NasaCard
+                  imgUrl={imgUrl}
+                  location={nasaData.location}
+                  date={nasaData.date_created}
+                  title={nasaData.title}
+                  description={nasaData.description}
+                  onAddToCollection={() => props.onAddToCollection(data)}
+                />
+              </div>
+            );
+          })}
       </div>
     </div>
   );
 };
-
-function renderCollectionItems({ data, links }) {
-  const nasaData = data[0];
-  const nasaLinks = links[0];
-  const href = nasaLinks.href;
-
-  let imgUrl = '';
-  if (IMG_REGEX.test(href)) {
-    imgUrl = href;
-  } else {
-    imgUrl = IMG_PLACEHOLDER;
-  }
-
-  return (
-    <div className="search__list-column" key={nasaData.nasa_id}>
-      <NasaCard
-        imgUrl={imgUrl}
-        location={nasaData.location}
-        date={nasaData.date_created}
-        title={nasaData.title}
-        description={nasaData.description}
-      />
-    </div>
-  );
-}
 
 export default List;

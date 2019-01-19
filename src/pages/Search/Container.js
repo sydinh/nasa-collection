@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { compose } from 'redux';
@@ -40,6 +41,10 @@ class SearchContainer extends Component {
     event.preventDefault();
   };
 
+  handleOnAddToCollection = data => {
+    console.log(data);
+  };
+
   render() {
     const { searchTerm } = this.state;
     const { collection, isLoading, error, metaData } = this.props;
@@ -61,18 +66,23 @@ class SearchContainer extends Component {
           />
           {isLoading && <Loading isSearching />}
           {error && <p>Error</p>}
-          <List searchTerm={searchTerm} collection={collection} metaData={metaData} />
+          <List
+            searchTerm={searchTerm}
+            collection={collection}
+            metaData={metaData}
+            onAddToCollection={this.handleOnAddToCollection}
+          />
         </Main>
       </Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ collection }) => ({
-  collection: getCollection(collection),
-  isLoading: getCollectionLoading(collection),
-  error: getCollectionError(collection),
-  metaData: getCollectionMetaData(collection),
+const mapStateToProps = state => ({
+  collection: getCollection(state.collection),
+  isLoading: getCollectionLoading(state.collection),
+  error: getCollectionError(state.collection),
+  metaData: getCollectionMetaData(state.collection),
 });
 
 const mapDispatchToProps = { searchCollection };
@@ -81,6 +91,21 @@ const withRedux = connect(
   mapStateToProps,
   mapDispatchToProps,
 );
+
+SearchContainer.propTypes = {
+  collection: PropTypes.object,
+  isLoading: PropTypes.bool,
+  error: PropTypes.object,
+  metaData: PropTypes.object,
+  searchCollection: PropTypes.func,
+};
+
+SearchContainer.defaultProps = {
+  collection: {},
+  isLoading: false,
+  error: null,
+  metaData: null,
+};
 
 export default compose(
   withRedux,

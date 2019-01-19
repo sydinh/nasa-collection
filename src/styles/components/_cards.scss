@@ -55,4 +55,10 @@
     word-break: break-all;
     letter-spacing: 0.11px;
   }
+
+  &__button-add,
+  &__button-delete {
+    width: 100%;
+    margin: 10px 0 0;
+  }
 }
