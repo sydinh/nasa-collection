@@ -3,6 +3,6 @@
 // -----------------------------------------------------------------------------
 
 .main {
-  min-height: 100vh;
+  min-height: calc(100vh - #{$footer-height});
   padding: 72px 42px;
 }

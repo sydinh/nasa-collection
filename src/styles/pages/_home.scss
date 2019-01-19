@@ -8,6 +8,13 @@
     justify-content: space-between;
   }
 
+  &__instruction {
+    @include flexbox-centering;
+    min-height: 300px;
+    color: rgba($black, 0.4);
+    font-size: $font-size-medium;
+  }
+
   &__title {
     margin: 0;
   }
@@ -18,5 +25,16 @@
     font-weight: $font-weight-bold;
     letter-spacing: -1px;
     opacity: 0.3;
+  }
+
+  &__list {
+    @include flexbox-centering-vertical;
+    flex-wrap: wrap;
+    margin: 20px -15px 0;
+  }
+
+  &__item {
+    width: calc(20% - 30px);
+    margin: 20px 15px;
   }
 }

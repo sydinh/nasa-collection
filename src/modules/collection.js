@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
-import { API } from 'constants/ApiClient';
 
 // Actions
 export const SEARCH_COLLECTION_REQUESTED = 'collection/SEARCH_COLLECTION_REQUESTED';
 export const SEARCH_COLLECTION_SUCCESS = 'collection/SEARCH_COLLECTION_SUCCESS';
 export const SEARCH_COLLECTION_FAILURE = 'collection/SEARCH_COLLECTION_FAILURE';
+export const CLEAR_SEARCH_RESULT = 'collection/CLEAR_SEARCH_RESULT';
 
 // Initial State
 const initialState = fromJS({
@@ -19,11 +19,16 @@ const initialState = fromJS({
 export default (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_COLLECTION_REQUESTED:
-      return state.set('isLoading', true);
+      return state
+        .set('collection', [])
+        .set('isLoading', true)
+        .set('error', null);
     case SEARCH_COLLECTION_SUCCESS:
       return state.set('isLoading', false).set('collection', action.payload);
     case SEARCH_COLLECTION_FAILURE:
       return state.set('isLoading', false).set('error', action.payload);
+    case CLEAR_SEARCH_RESULT:
+      return state.set('collection', action.payload);
     default:
       return state;
   }
@@ -34,7 +39,7 @@ export const searchCollection = data => {
   return dispatch => {
     dispatch({ type: SEARCH_COLLECTION_REQUESTED });
     axios
-      .get(API + data)
+      .get(`${process.env.API_URL}search?q=${data}`)
       .then(response =>
         dispatch({
           type: SEARCH_COLLECTION_SUCCESS,
@@ -44,10 +49,18 @@ export const searchCollection = data => {
       .catch(error =>
         dispatch({
           type: SEARCH_COLLECTION_FAILURE,
-          payload: error,
+          payload: error.response.data,
         }),
       );
   };
+};
+
+export const clearSearchResult = () => {
+  return dispatch =>
+    dispatch({
+      type: CLEAR_SEARCH_RESULT,
+      payload: [],
+    });
 };
 
 // Selectors

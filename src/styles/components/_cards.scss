@@ -35,6 +35,11 @@
       color: rgba($black, 0.6);
       font-size: $font-size-small;
       letter-spacing: 0.09px;
+
+      &:first-child {
+        @include truncate;
+        max-width: 35%;
+      }
     }
   }
 

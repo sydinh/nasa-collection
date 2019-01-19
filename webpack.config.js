@@ -1,5 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const dotenv = require('dotenv');
+
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 const config = {
   entry: './src/index.js',
@@ -53,6 +60,7 @@ const config = {
     historyApiFallback: true,
     contentBase: './dist',
   },
+  plugins: [new webpack.DefinePlugin(envKeys)],
 };
 
 module.exports = config;

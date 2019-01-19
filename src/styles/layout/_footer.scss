@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the Footer of the site/application.
+// -----------------------------------------------------------------------------
+
+.footer {
+  @include flexbox-centering-vertical;
+  justify-content: flex-end;
+  height: $footer-height;
+  padding: 0 42px;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+}

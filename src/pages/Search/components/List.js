@@ -1,7 +1,8 @@
 import React from 'react';
 
 import NasaCard from 'components/Cards/NasaCard';
-import { IMG_REGEX, IMG_PLACEHOLDER } from '../constants';
+import { imgPlaceholder } from 'utils/imgUtil';
+import { displayPluralOrSingular } from 'utils/stringUtil';
 
 const List = props => {
   if (props.collection.length === 0) return null;
@@ -12,23 +13,16 @@ const List = props => {
     <div className="search__list">
       {props.metaData && (
         <p className="search__list-title">
-          {props.metaData.total_hits} {props.metaData.total_hits > 2 ? 'results' : 'result'} for “
-          {props.searchTerm}”
+          {props.metaData.total_hits} {displayPluralOrSingular(props.metaData.total_hits, 'result')}{' '}
+          for “{props.searchTerm}”
         </p>
       )}
       <div className="search__list-row">
         {collectionItems &&
           collectionItems.map(data => {
             const nasaData = data.data[0];
-            const nasaLinks = data.links[0];
-            const href = nasaLinks.href;
-
-            let imgUrl = '';
-            if (IMG_REGEX.test(href)) {
-              imgUrl = href;
-            } else {
-              imgUrl = IMG_PLACEHOLDER;
-            }
+            const nasaLinks = data.links ? data.links[0] : [];
+            const imgUrl = imgPlaceholder(nasaLinks.href);
 
             return (
               <div className="search__list-column" key={nasaData.nasa_id}>

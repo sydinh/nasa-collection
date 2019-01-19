@@ -1,20 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import 'firebase/database';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
 import * as routes from 'constants/routes';
 import Loading from 'components/Loading';
+import firebase from 'firebase.js';
 
 import Form from './components/Form';
 import List from './components/List';
 
 import {
   searchCollection,
+  clearSearchResult,
   getCollection,
   getCollectionLoading,
   getCollectionError,
@@ -27,6 +30,10 @@ class SearchContainer extends Component {
     this.state = {
       searchTerm: '',
     };
+  }
+
+  componentWillUnmount() {
+    this.props.clearSearchResult();
   }
 
   handleChange = event => {
@@ -42,7 +49,9 @@ class SearchContainer extends Component {
   };
 
   handleOnAddToCollection = data => {
-    console.log(data);
+    const collectionRef = firebase.database().ref('collection');
+    collectionRef.push(data);
+    setTimeout(() => this.props.history.push(routes.HOME), 500);
   };
 
   render() {
@@ -64,19 +73,36 @@ class SearchContainer extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
-          {isLoading && <Loading isSearching />}
-          {error && <p>Error</p>}
           <List
             searchTerm={searchTerm}
             collection={collection}
             metaData={metaData}
             onAddToCollection={this.handleOnAddToCollection}
           />
+          {isLoading && <Loading isSearching />}
+          {error && <p>{error.reason}</p>}
         </Main>
       </Fragment>
     );
   }
 }
+
+SearchContainer.propTypes = {
+  collection: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.array.isRequired]),
+  isLoading: PropTypes.bool,
+  error: PropTypes.object,
+  metaData: PropTypes.object,
+  searchCollection: PropTypes.func,
+  clearSearchResult: PropTypes.func,
+};
+
+SearchContainer.defaultProps = {
+  isLoading: false,
+  error: null,
+  metaData: null,
+  searchCollection: () => {},
+  clearSearchResult: () => {},
+};
 
 const mapStateToProps = state => ({
   collection: getCollection(state.collection),
@@ -85,29 +111,18 @@ const mapStateToProps = state => ({
   metaData: getCollectionMetaData(state.collection),
 });
 
-const mapDispatchToProps = { searchCollection };
+const mapDispatchToProps = {
+  searchCollection,
+  clearSearchResult,
+};
 
 const withRedux = connect(
   mapStateToProps,
   mapDispatchToProps,
 );
 
-SearchContainer.propTypes = {
-  collection: PropTypes.object,
-  isLoading: PropTypes.bool,
-  error: PropTypes.object,
-  metaData: PropTypes.object,
-  searchCollection: PropTypes.func,
-};
-
-SearchContainer.defaultProps = {
-  collection: {},
-  isLoading: false,
-  error: null,
-  metaData: null,
-};
-
 export default compose(
+  withRouter,
   withRedux,
   withScrollToTopOnMount,
 )(SearchContainer);
