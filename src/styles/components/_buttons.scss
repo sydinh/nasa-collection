@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .button {
+  @include truncate;
   @include transition;
   outline: 0;
   padding: 10px 15px;
@@ -36,5 +37,10 @@
       border-color: $black;
       background: transparent;
     }
+  }
+
+  &--liked {
+    color: green;
+    border-color: green;
   }
 }

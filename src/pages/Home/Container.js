@@ -16,6 +16,7 @@ class HomeContainer extends Component {
     this.state = {
       collection: null,
       isLoading: false,
+      favorite: false,
     };
   }
 
@@ -31,7 +32,22 @@ class HomeContainer extends Component {
     );
   }
 
-  handleOnDeleteFromCollection = data => {
+  handleAddToFavorites = data => {
+    this.setState(
+      prevState => {
+        return {
+          favorite: !prevState.favorite,
+        };
+      },
+      () => {
+        const { favorite } = this.state;
+        const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
+        collectionRef.update({ favorite });
+      },
+    );
+  };
+
+  handleDeleteFromCollection = data => {
     const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
     collectionRef.remove();
   };
@@ -49,7 +65,8 @@ class HomeContainer extends Component {
           <List
             isLoading={isLoading}
             collection={collection}
-            onDeleteFromCollection={this.handleOnDeleteFromCollection}
+            onAddToFavorites={this.handleAddToFavorites}
+            onDeleteFromCollection={this.handleDeleteFromCollection}
           />
         </Main>
       </Fragment>

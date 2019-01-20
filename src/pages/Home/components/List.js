@@ -26,6 +26,8 @@ const List = props => {
               date={data[1].data[0].date_created}
               title={data[1].data[0].title}
               description={data[1].data[0].description}
+              favorite={data[1].favorite}
+              onAddToFavorites={() => props.onAddToFavorites(data)}
               onDeleteFromCollection={() => props.onDeleteFromCollection(data)}
             />
           </div>

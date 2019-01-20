@@ -48,7 +48,7 @@ class SearchContainer extends Component {
     event.preventDefault();
   };
 
-  handleOnAddToCollection = data => {
+  handleAddToCollection = data => {
     const collectionRef = firebase.database().ref('collection');
     collectionRef.push(data);
     setTimeout(() => this.props.history.push(routes.HOME), 500);
@@ -77,7 +77,7 @@ class SearchContainer extends Component {
             searchTerm={searchTerm}
             collection={collection}
             metaData={metaData}
-            onAddToCollection={this.handleOnAddToCollection}
+            onAddToCollection={this.handleAddToCollection}
           />
           {isLoading && <Loading isSearching />}
           {error && <p>{error.reason}</p>}
