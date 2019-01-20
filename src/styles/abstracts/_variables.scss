@@ -2,9 +2,6 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-/// @type Paths
-$img-url: '../images';
-
 /// @type Font family
 $font-family-base: Helvetica, 'Segoe UI', Arial, sans-serif;
 
@@ -32,13 +29,14 @@ $border-radius-base: 3px;
 $border-radius-medium: 5px;
 $border-radius-hack: 100px;
 
-/// @type Components
-$loading-color: #9880ff;
-$loading-background: $loading-color;
-
-// Positions
+/// @type Positions
 $z-indexes: (
   base: 1,
   under: -1,
   upper: 2,
 );
+
+/// @type Components
+$loading-color: #9880ff;
+$loading-background: $loading-color;
+$footer-height: 54px;

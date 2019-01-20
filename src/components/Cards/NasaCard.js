@@ -11,13 +11,10 @@ const NasaCard = props => (
       </div>
     )}
     <figcaption className="nasa-card__caption">
-      {props.location ||
-        (props.date && (
-          <div className="nasa-card__caption-header">
-            <p>{props.location}</p>
-            <p>{props.date}</p>
-          </div>
-        ))}
+      <div className="nasa-card__caption-header">
+        <p>{props.location}</p>
+        <p>{props.date}</p>
+      </div>
       {props.title && <h3 className="nasa-card__caption-title">{props.title}</h3>}
       {props.description && <p className="nasa-card__caption-description">{props.description}</p>}
     </figcaption>
@@ -54,6 +51,8 @@ NasaCard.defaultProps = {
   title: '',
   description: '',
   isInCollection: false,
+  onAddToCollection: () => {},
+  onDeleteFromCollection: () => {},
 };
 
 export default NasaCard;

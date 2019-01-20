@@ -6,6 +6,8 @@ import Home from 'pages/Home';
 import Search from 'pages/Search';
 import NotFound from 'pages/NotFound';
 
+import Footer from 'components/Footer';
+
 import * as routes from 'constants/routes';
 
 const App = () => (
@@ -15,6 +17,7 @@ const App = () => (
       <Route path={routes.SEARCH} component={Search} />
       <Route component={NotFound} />
     </Switch>
+    <Footer />
   </Fragment>
 );
 
