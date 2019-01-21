@@ -12,8 +12,8 @@ import Header from './components/Header';
 import List from './components/List';
 
 class HomeContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       collection: null,
       isLoading: false,

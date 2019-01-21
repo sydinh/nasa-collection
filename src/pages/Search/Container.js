@@ -26,8 +26,8 @@ import {
 } from 'modules/collection';
 
 class SearchContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       searchTerm: '',
     };
