@@ -16,7 +16,6 @@ class HomeContainer extends Component {
     this.state = {
       collection: null,
       isLoading: false,
-      favorite: false,
     };
   }
 
@@ -33,18 +32,13 @@ class HomeContainer extends Component {
   }
 
   handleAddToFavorites = data => {
-    this.setState(
-      prevState => {
-        return {
-          favorite: !prevState.favorite,
-        };
-      },
-      () => {
-        const { favorite } = this.state;
-        const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
-        collectionRef.update({ favorite });
-      },
-    );
+    const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
+    collectionRef.update({ favorite: true });
+  };
+
+  handleDeleteFromFavorites = data => {
+    const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
+    collectionRef.update({ favorite: false });
   };
 
   handleDeleteFromCollection = data => {
@@ -66,6 +60,7 @@ class HomeContainer extends Component {
             isLoading={isLoading}
             collection={collection}
             onAddToFavorites={this.handleAddToFavorites}
+            onDeleteFromFavorites={this.handleDeleteFromFavorites}
             onDeleteFromCollection={this.handleDeleteFromCollection}
           />
         </Main>
