@@ -40,10 +40,13 @@ npm run build-dev
 - react-dom
 - react-router-dom
 - redux
+- redux-thunk
+- reselect
 - react-redux
 - ducks-modular-redux
 - SASS
 - Firebase
+- html5-boilerplate
 
 ## References
 
@@ -55,6 +58,10 @@ npm run build-dev
 #### ducks-modular-redux
 
 - https://github.com/erikras/ducks-modular-redux
+
+#### html5-boilerplate
+
+- https://github.com/h5bp/html5-boilerplate
 
 ## Tools
 

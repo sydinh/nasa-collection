@@ -1,8 +1,11 @@
 // -----------------------------------------------------------------------------
-// This file contains all styles related to the content of the site/application.
+// This file contains CSS helper classes.
 // -----------------------------------------------------------------------------
 
-.main {
-  min-height: calc(100vh - #{$footer-height});
-  padding: 72px 42px;
+.u-truncate {
+  @include truncate;
+}
+
+.u-list-unstyled {
+  @include list-unstyled;
 }

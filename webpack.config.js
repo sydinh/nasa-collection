@@ -1,5 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const dotenv = require('dotenv');
+
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 const config = {
   entry: './src/index.js',
@@ -41,7 +48,6 @@ const config = {
     alias: {
       components: path.resolve(__dirname, './src/components'),
       constants: path.resolve(__dirname, './src/constants'),
-      images: path.resolve(__dirname, './src/images'),
       modules: path.resolve(__dirname, './src/modules'),
       pages: path.resolve(__dirname, './src/pages'),
       styles: path.resolve(__dirname, './src/styles'),
@@ -53,6 +59,7 @@ const config = {
     historyApiFallback: true,
     contentBase: './dist',
   },
+  plugins: [new webpack.DefinePlugin(envKeys)],
 };
 
 module.exports = config;

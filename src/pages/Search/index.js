@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+
 import ErrorBoundary from 'utils/ErrorBoundary';
 import Loading from 'components/Loading';
 

@@ -1,39 +1,45 @@
 import React from 'react';
 
 import NasaCard from 'components/Cards/NasaCard';
+import { imgPlaceholder } from 'utils/imgUtil';
+import { displayPluralOrSingular } from 'utils/stringUtil';
 
-const List = ({ collection, searchTerm }) => {
-  if (collection.length === 0) return null;
+const List = props => {
+  if (props.collection.length === 0) return null;
 
-  const { items: collectionItems } = collection;
-  const { total_hits: totalHits } = collection.metadata;
+  const { items: collectionItems } = props.collection;
 
   return (
     <div className="search__list">
-      <p className="search__list-title">
-        {totalHits} {totalHits > 2 ? 'results' : 'result'} for “{searchTerm}”
-      </p>
+      {props.metaData && (
+        <p className="search__list-title">
+          {props.metaData.total_hits} {displayPluralOrSingular(props.metaData.total_hits, 'result')}{' '}
+          for “{props.searchTerm}”
+        </p>
+      )}
       <div className="search__list-row">
-        {collectionItems && collectionItems.map(data => renderCollectionItems(data))}
+        {collectionItems &&
+          collectionItems.map(data => {
+            const nasaData = data.data[0];
+            const nasaLinks = data.links ? data.links[0] : [];
+            const imgUrl = imgPlaceholder(nasaLinks.href);
+
+            return (
+              <div className="search__list-column" key={nasaData.nasa_id}>
+                <NasaCard
+                  imgUrl={imgUrl}
+                  location={nasaData.location}
+                  date={nasaData.date_created}
+                  title={nasaData.title}
+                  description={nasaData.description}
+                  onAddToCollection={() => props.onAddToCollection(data)}
+                />
+              </div>
+            );
+          })}
       </div>
     </div>
   );
 };
-
-function renderCollectionItems(data) {
-  console.log(data);
-
-  return (
-    <div className="search__list-column" key={data.data[0].nasa_id}>
-      <NasaCard
-        imgUrl={data.links[0].href}
-        location={data.data[0].location}
-        date={data.data[0].date_created}
-        title={data.data[0].title}
-        description={data.data[0].description}
-      />
-    </div>
-  );
-}
 
 export default List;
