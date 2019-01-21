@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
+import PropTypes from 'prop-types';
 import 'firebase/database';
+import firebase from 'firebase.js';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
-import firebase from 'firebase.js';
 
 import Header from './components/Header';
 import List from './components/List';
@@ -24,10 +25,7 @@ class HomeContainer extends Component {
 
     const collectionRef = firebase.database().ref('collection');
     collectionRef.on('value', snapshot =>
-      this.setState({
-        collection: snapshot.val(),
-        isLoading: false,
-      }),
+      this.setState({ isLoading: false, collection: snapshot.val() }),
     );
   }
 
@@ -47,7 +45,7 @@ class HomeContainer extends Component {
   };
 
   render() {
-    const { collection, isLoading } = this.state;
+    const { isLoading, collection } = this.state;
 
     return (
       <Fragment>
@@ -68,5 +66,21 @@ class HomeContainer extends Component {
     );
   }
 }
+
+HomeContainer.propTypes = {
+  isLoading: PropTypes.bool,
+  collection: PropTypes.object,
+  onAddToFavorites: PropTypes.func,
+  onDeleteFromFavorites: PropTypes.func,
+  onDeleteFromCollection: PropTypes.func,
+};
+
+HomeContainer.defaultProps = {
+  isLoading: false,
+  collection: null,
+  onAddToFavorites: () => {},
+  onDeleteFromFavorites: () => {},
+  onDeleteFromCollection: () => {},
+};
 
 export default compose(withScrollToTopOnMount)(HomeContainer);

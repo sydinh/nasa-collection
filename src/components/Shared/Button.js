@@ -25,7 +25,7 @@ Button.defaultProps = {
   onClick: () => {},
   disabled: false,
   className: '',
-  children: 'Button',
+  children: 'Default',
 };
 
 export default Button;

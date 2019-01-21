@@ -5,9 +5,7 @@ import { hot } from 'react-hot-loader/root';
 import Home from 'pages/Home';
 import Search from 'pages/Search';
 import NotFound from 'pages/NotFound';
-
 import Footer from 'components/Footer';
-
 import * as routes from 'constants/routes';
 
 const App = () => (
