@@ -48,13 +48,13 @@ npm run build-dev
 - SASS
 - ducks-modular-redux
 - html5-boilerplate
-- PWA (Progressive Web Apps)
+- PWA (Have only Site Web Manifest. Service Worker would come soon)
 
 * Others: dotenv, react-hot-loader, prettier, pretty-quick, husky ...
 
 ## References
 
-#### ImmutableJS
+#### immutable
 
 - https://redux.js.org/recipes/using-immutablejs-with-redux
 - https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/immutablejs.md
@@ -74,7 +74,7 @@ npm run build-dev
 
 #### PWA (Progressive Web Apps)
 
-- https://developers.google.com/web/progressive-web-apps/
+- https://developers.google.com/web/progressive-web-apps
 
 ## Tools
 
