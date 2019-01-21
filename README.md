@@ -30,7 +30,6 @@ npm run build-dev
 
 ## Tech stack
 
-- PWA
 - axios
 - classnames
 - connected-react-router
@@ -49,6 +48,7 @@ npm run build-dev
 - SASS
 - ducks-modular-redux
 - html5-boilerplate
+- PWA (Progressive Web Apps)
 
 * Others: dotenv, react-hot-loader, prettier, pretty-quick, husky ...
 
@@ -59,6 +59,11 @@ npm run build-dev
 - https://redux.js.org/recipes/using-immutablejs-with-redux
 - https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/immutablejs.md
 
+#### reselect
+
+- https://github.com/reduxjs/reselect
+- https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/reselect.md
+
 #### ducks-modular-redux
 
 - https://github.com/erikras/ducks-modular-redux
@@ -66,6 +71,10 @@ npm run build-dev
 #### html5-boilerplate
 
 - https://github.com/h5bp/html5-boilerplate
+
+#### PWA (Progressive Web Apps)
+
+- https://developers.google.com/web/progressive-web-apps/
 
 ## Tools
 
