@@ -30,23 +30,27 @@ npm run build-dev
 
 ## Tech stack
 
+- PWA
 - axios
 - classnames
 - connected-react-router
+- firebase
 - immutable
 - normalize.css
 - prop-types
 - react
 - react-dom
+- react-helmet
+- react-redux
 - react-router-dom
 - redux
 - redux-thunk
 - reselect
-- react-redux
-- ducks-modular-redux
 - SASS
-- Firebase
+- ducks-modular-redux
 - html5-boilerplate
+
+* Others: dotenv, react-hot-loader, prettier, pretty-quick, husky ...
 
 ## References
 

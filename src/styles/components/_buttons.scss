@@ -21,25 +21,30 @@
     background: #5d3999;
   }
 
-  &--primary {
+  &--default,
+  &--success {
     padding: 15px;
-    background: transparent;
     border: 1px solid;
-    border-color: #ceced2;
+    background: transparent;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+    }
+  }
+
+  &--default {
     color: rgba($black, 0.4);
-    font-size: $font-size-small;
-    font-weight: $font-weight-regular;
-    letter-spacing: 0.09px;
+    border-color: #ceced2;
 
     &:hover,
     &:focus {
       color: $black;
       border-color: $black;
-      background: transparent;
     }
   }
 
-  &--liked {
+  &--success {
     color: green;
     border-color: green;
   }

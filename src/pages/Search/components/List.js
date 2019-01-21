@@ -22,12 +22,12 @@ const List = props => {
           collectionItems.map(data => {
             const nasaData = data.data[0];
             const nasaLinks = data.links ? data.links[0] : [];
-            const imgUrl = imgPlaceholder(nasaLinks.href);
+            const imgSrc = imgPlaceholder(nasaLinks.href);
 
             return (
               <div className="search__list-column" key={nasaData.nasa_id}>
                 <NasaCard
-                  imgUrl={imgUrl}
+                  imgSrc={imgSrc}
                   location={nasaData.location}
                   date={nasaData.date_created}
                   title={nasaData.title}
