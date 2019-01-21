@@ -1,17 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import 'firebase/database';
+import firebase from 'firebase.js';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
-import * as routes from 'constants/routes';
 import Loading from 'components/Loading';
-import firebase from 'firebase.js';
+import * as routes from 'constants/routes';
 
+import Header from './components/Header';
 import Form from './components/Form';
 import List from './components/List';
 
@@ -32,10 +33,6 @@ class SearchContainer extends Component {
     };
   }
 
-  componentWillUnmount() {
-    this.props.clearSearchResult();
-  }
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -54,6 +51,10 @@ class SearchContainer extends Component {
     setTimeout(() => this.props.history.push(routes.HOME), 500);
   };
 
+  componentWillUnmount() {
+    this.props.clearSearchResult();
+  }
+
   render() {
     const { searchTerm } = this.state;
     const { collection, isLoading, error, metaData } = this.props;
@@ -64,10 +65,7 @@ class SearchContainer extends Component {
           <title>NASA Search</title>
         </Helmet>
         <Main page="search">
-          <Link to={routes.HOME} className="search__link">
-            Back to Collection
-          </Link>
-          <h1 className="search__title">Search from Nasa</h1>
+          <Header />
           <Form
             searchTerm={searchTerm}
             handleChange={this.handleChange}
@@ -111,10 +109,7 @@ const mapStateToProps = state => ({
   metaData: getCollectionMetaData(state.collection),
 });
 
-const mapDispatchToProps = {
-  searchCollection,
-  clearSearchResult,
-};
+const mapDispatchToProps = { searchCollection, clearSearchResult };
 
 const withRedux = connect(
   mapStateToProps,

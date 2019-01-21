@@ -9,8 +9,8 @@
     height: 168px;
 
     &:before {
-      content: '';
       @include position(absolute, 0, 20px, 0, 20px);
+      content: '';
       z-index: z(under);
       box-shadow: 0 10px 20px 0 rgba(#888, 0.8);
     }
