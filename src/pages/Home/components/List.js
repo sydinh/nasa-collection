@@ -28,6 +28,7 @@ const List = props => {
               description={data[1].data[0].description}
               favorite={data[1].favorite}
               onAddToFavorites={() => props.onAddToFavorites(data)}
+              onDeleteFromFavorites={() => props.onDeleteFromFavorites(data)}
               onDeleteFromCollection={() => props.onDeleteFromCollection(data)}
             />
           </div>
