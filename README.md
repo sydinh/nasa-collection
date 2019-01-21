@@ -48,7 +48,7 @@ npm run build-dev
 - SASS
 - ducks-modular-redux
 - html5-boilerplate
-- PWA (Have only Site Web Manifest. Service Worker would come soon)
+- PWA
 
 * Others: dotenv, react-hot-loader, prettier, pretty-quick, husky ...
 
