@@ -32,6 +32,14 @@ class SearchContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.clearSearchResult();
+  }
+
+  componentWillUnmount() {
+    this.props.clearSearchResult();
+  }
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -50,10 +58,6 @@ class SearchContainer extends Component {
     setTimeout(() => this.props.history.push(routes.HOME), 500);
   };
 
-  componentWillUnmount() {
-    this.props.clearSearchResult();
-  }
-
   render() {
     const { searchTerm } = this.state;
     const { collection, isLoading, error, metaData } = this.props;
@@ -64,7 +68,7 @@ class SearchContainer extends Component {
           <title>NASA Search</title>
         </Helmet>
         <Main page="search">
-          <Header />
+          <Header isLoading={isLoading} />
           <Form
             searchTerm={searchTerm}
             handleChange={this.handleChange}

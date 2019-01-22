@@ -28,7 +28,10 @@ export default (state = initialState, action) => {
     case SEARCH_COLLECTION_FAILURE:
       return state.set('isLoading', false).set('error', action.payload);
     case CLEAR_SEARCH_RESULT:
-      return state.set('collection', action.payload);
+      return state
+        .set('collection', [])
+        .set('isLoading', false)
+        .set('error', null);
     default:
       return state;
   }
@@ -56,11 +59,7 @@ export const searchCollection = data => {
 };
 
 export const clearSearchResult = () => {
-  return dispatch =>
-    dispatch({
-      type: CLEAR_SEARCH_RESULT,
-      payload: [],
-    });
+  return dispatch => dispatch({ type: CLEAR_SEARCH_RESULT });
 };
 
 // Selectors
