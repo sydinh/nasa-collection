@@ -4,13 +4,12 @@ import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import 'firebase/database';
-import firebase from 'firebase.js';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
 import Loading from 'components/Loading';
 import * as routes from 'constants/routes';
+import firebase from 'firebase.js';
 
 import Header from './components/Header';
 import Form from './components/Form';

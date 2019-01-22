@@ -2,11 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import 'firebase/database';
-import firebase from 'firebase.js';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
+import firebase from 'firebase.js';
 
 import Header from './components/Header';
 import List from './components/List';
