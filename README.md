@@ -4,7 +4,7 @@ https://nasa-collection.firebaseapp.com
 
 ## Building and running on localhost
 
-> Note: You can use npm or yarn
+> You can use npm or yarn
 
 First install dependencies:
 
