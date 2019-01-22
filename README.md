@@ -4,6 +4,8 @@ https://nasa-collection.firebaseapp.com
 
 ## Building and running on localhost
 
+> Note: You can use npm or yarn
+
 First install dependencies:
 
 ```sh
@@ -30,27 +32,27 @@ npm run build-dev
 
 ## Tech stack
 
-- axios
-- classnames
-- connected-react-router
-- firebase
-- immutable
-- normalize.css
-- prop-types
-- react
-- react-dom
-- react-helmet
-- react-redux
-- react-router-dom
-- redux
-- redux-thunk
-- reselect
-- SASS
-- ducks-modular-redux
-- html5-boilerplate
-- PWA (Have only Site Web Manifest. Service Worker would come soon)
+- [axios](https://github.com/axios/axios)
+- [classnames](https://github.com/JedWatson/classnames)
+- [connected-react-router](https://github.com/supasate/connected-react-router)
+- [firebase](https://firebase.google.com/)
+- [immutable](https://github.com/facebook/immutable-js/)
+- [normalize.css](https://github.com/necolas/normalize.css)
+- [prop-types](https://github.com/facebook/prop-types)
+- [react](https://github.com/facebook/react)
+- [react-dom](https://github.com/facebook/react)
+- [react-helmet](https://github.com/nfl/react-helmet)
+- [react-redux](https://github.com/reduxjs/react-redux)
+- [react-router-dom](https://github.com/ReactTraining/react-router)
+- [redux](https://github.com/reduxjs/redux)
+- [redux-thunk](https://github.com/reduxjs/redux-thunk)
+- [reselect](https://github.com/reduxjs/reselect)
+- [SASS](https://sass-lang.com/)
+- [ducks-modular-redux](https://github.com/erikras/ducks-modular-redux)
+- [html5-boilerplate](https://github.com/h5bp/html5-boilerplate)
+- [PWA](https://developers.google.com/web/progressive-web-apps/) (Have only Site Web Manifest. Service Worker would come soon)
 
-* Others: dotenv, react-hot-loader, prettier, pretty-quick, husky ...
+* Others: [dotenv](https://github.com/motdotla/dotenv), [react-hot-loader](https://github.com/gaearon/react-hot-loader), [prettier](https://github.com/prettier/prettier), [pretty-quick](https://github.com/azz/pretty-quick), [husky](https://github.com/typicode/husky) ...
 
 ## References
 
@@ -61,20 +63,7 @@ npm run build-dev
 
 #### reselect
 
-- https://github.com/reduxjs/reselect
 - https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/reselect.md
-
-#### ducks-modular-redux
-
-- https://github.com/erikras/ducks-modular-redux
-
-#### html5-boilerplate
-
-- https://github.com/h5bp/html5-boilerplate
-
-#### PWA (Progressive Web Apps)
-
-- https://developers.google.com/web/progressive-web-apps
 
 ## Tools
 
