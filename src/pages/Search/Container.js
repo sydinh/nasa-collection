@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
-import Loading from 'components/Loading';
 import * as routes from 'constants/routes';
 import firebase from 'firebase.js';
 
@@ -58,6 +57,15 @@ class SearchContainer extends Component {
     setTimeout(() => this.props.history.push(routes.HOME), 500);
   };
 
+  static getDerivedStateFromProps(props) {
+    if (props.isLoading) {
+      document.body.classList.add('search-active');
+    } else {
+      document.body.classList.remove('search-active');
+    }
+    return null;
+  }
+
   render() {
     const { searchTerm } = this.state;
     const { collection, isLoading, error, metaData } = this.props;
@@ -68,7 +76,7 @@ class SearchContainer extends Component {
           <title>NASA Search</title>
         </Helmet>
         <Main page="search">
-          <Header isLoading={isLoading} />
+          <Header />
           <Form
             searchTerm={searchTerm}
             handleChange={this.handleChange}
@@ -76,12 +84,12 @@ class SearchContainer extends Component {
           />
           <List
             searchTerm={searchTerm}
+            isLoading={isLoading}
+            error={error}
             collection={collection}
             metaData={metaData}
             onAddToCollection={this.handleAddToCollection}
           />
-          {isLoading && <Loading isSearching />}
-          {error && <p>{error.reason}</p>}
         </Main>
       </Fragment>
     );

@@ -1,10 +1,15 @@
 import React from 'react';
 
-import NasaCard from 'components/Cards/NasaCard';
-import { imgPlaceholder } from 'utils/imgUtil';
+import Loading from 'components/Loading';
 import { displayPluralOrSingular } from 'utils/stringUtil';
 
+import Item from './Item';
+
 const List = props => {
+  if (props.isLoading) return <Loading isSearching />;
+
+  if (props.error) return <p className="search__invalid-feedback">{props.error.reason}</p>;
+
   if (props.collection.length === 0) return null;
 
   const { items: collectionItems } = props.collection;
@@ -19,24 +24,13 @@ const List = props => {
       )}
       <div className="search__list-row">
         {collectionItems &&
-          collectionItems.map(data => {
-            const nasaData = data.data[0];
-            const nasaLinks = data.links ? data.links[0] : [];
-            const imgSrc = imgPlaceholder(nasaLinks.href);
-
-            return (
-              <div className="search__list-column" key={nasaData.nasa_id}>
-                <NasaCard
-                  imgSrc={imgSrc}
-                  location={nasaData.location}
-                  date={nasaData.date_created}
-                  title={nasaData.title}
-                  description={nasaData.description}
-                  onAddToCollection={() => props.onAddToCollection(data)}
-                />
-              </div>
-            );
-          })}
+          collectionItems.map(data => (
+            <Item
+              data={data}
+              key={data.data[0].nasa_id}
+              onAddToCollection={props.onAddToCollection}
+            />
+          ))}
       </div>
     </div>
   );

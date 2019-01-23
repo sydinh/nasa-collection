@@ -1,7 +1,6 @@
 import React from 'react';
 
-import NasaCard from 'components/Cards/NasaCard';
-import { imgPlaceholder } from 'utils/imgUtil';
+import Item from './Item';
 
 const List = props => {
   if (props.isLoading)
@@ -14,27 +13,15 @@ const List = props => {
 
   return (
     <div className="home__list">
-      {collectionEntries.map(data => {
-        const links = data[1].links ? data[1].links[0] : [];
-        const imgSrc = imgPlaceholder(links.href);
-
-        return (
-          <div className="home__item" key={data[0]}>
-            <NasaCard
-              isInCollection
-              imgSrc={imgSrc}
-              location={data[1].data[0].location}
-              date={data[1].data[0].date_created}
-              title={data[1].data[0].title}
-              description={data[1].data[0].description}
-              favorite={data[1].favorite}
-              onAddToFavorites={() => props.onAddToFavorites(data)}
-              onDeleteFromFavorites={() => props.onDeleteFromFavorites(data)}
-              onDeleteFromCollection={() => props.onDeleteFromCollection(data)}
-            />
-          </div>
-        );
-      })}
+      {collectionEntries.map(data => (
+        <Item
+          data={data}
+          key={data[0]}
+          onAddToFavorites={props.onAddToFavorites}
+          onDeleteFromFavorites={props.onDeleteFromFavorites}
+          onDeleteFromCollection={props.onDeleteFromCollection}
+        />
+      ))}
     </div>
   );
 };
