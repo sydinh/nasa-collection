@@ -31,6 +31,15 @@ class SearchContainer extends Component {
     };
   }
 
+  static getDerivedStateFromProps(props) {
+    if (props.isLoading) {
+      document.body.classList.add('search-active');
+    } else {
+      document.body.classList.remove('search-active');
+    }
+    return null;
+  }
+
   componentDidMount() {
     this.props.clearSearchResult();
   }
@@ -40,9 +49,7 @@ class SearchContainer extends Component {
   }
 
   handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
@@ -56,15 +63,6 @@ class SearchContainer extends Component {
     collectionRef.push(data);
     setTimeout(() => this.props.history.push(routes.HOME), 500);
   };
-
-  static getDerivedStateFromProps(props) {
-    if (props.isLoading) {
-      document.body.classList.add('search-active');
-    } else {
-      document.body.classList.remove('search-active');
-    }
-    return null;
-  }
 
   render() {
     const { searchTerm } = this.state;

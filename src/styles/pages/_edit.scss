@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the Edit page.
+// -----------------------------------------------------------------------------
+
+.nasa-edit {
+  &__link {
+    color: #784cc0;
+    font-weight: $font-weight-regular;
+    letter-spacing: -0.34px;
+  }
+
+  &__title {
+    margin: 45px 0;
+    color: rgba($black, 0.75);
+    font-size: 40px;
+    font-weight: $font-weight-regular;
+    letter-spacing: -0.96px;
+  }
+
+  &__form-item {
+    margin: 0 0 15px;
+  }
+
+  &__form-title {
+    margin: 0 0 10px;
+    color: rgba($black, 0.9);
+    font-size: $font-size-small;
+    opacity: 0.3;
+  }
+}

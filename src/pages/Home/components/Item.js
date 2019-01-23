@@ -19,6 +19,7 @@ const Item = props => {
         favorite={props.data[1].favorite}
         onAddToFavorites={() => props.onAddToFavorites(props.data)}
         onDeleteFromFavorites={() => props.onDeleteFromFavorites(props.data)}
+        onEdit={() => props.onEdit(props.data)}
         onDeleteFromCollection={() => props.onDeleteFromCollection(props.data)}
       />
     </div>
