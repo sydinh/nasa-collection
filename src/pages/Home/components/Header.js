@@ -10,7 +10,7 @@ const Header = () => (
         NASA Collection
       </Link>
     </h1>
-    <Link to={routes.SEARCH} className="home__button button">
+    <Link to={routes.NASA_SEARCH} className="home__button button">
       Add new item
     </Link>
   </header>

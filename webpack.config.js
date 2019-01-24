@@ -13,6 +13,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [

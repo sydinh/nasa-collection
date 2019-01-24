@@ -19,6 +19,7 @@ const List = props => {
           key={data[0]}
           onAddToFavorites={props.onAddToFavorites}
           onDeleteFromFavorites={props.onDeleteFromFavorites}
+          onEdit={props.onEdit}
           onDeleteFromCollection={props.onDeleteFromCollection}
         />
       ))}

@@ -2,10 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
 import Main from 'components/Main';
 import firebase from 'firebase.js';
+import * as routes from 'constants/routes';
 
 import Header from './components/Header';
 import List from './components/List';
@@ -21,26 +23,33 @@ class HomeContainer extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
+    this.fetchCollection();
+  }
 
+  fetchCollection = () => {
     const collectionRef = firebase.database().ref('collection');
     collectionRef.on('value', snapshot =>
       this.setState({ isLoading: false, collection: snapshot.val() }),
     );
-  }
+  };
 
   handleAddToFavorites = data => {
-    const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
-    collectionRef.update({ favorite: true });
+    const collectionItemRef = firebase.database().ref(`/collection/${data[0]}`);
+    collectionItemRef.update({ favorite: true });
   };
 
   handleDeleteFromFavorites = data => {
-    const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
-    collectionRef.update({ favorite: false });
+    const collectionItemRef = firebase.database().ref(`/collection/${data[0]}`);
+    collectionItemRef.update({ favorite: false });
+  };
+
+  handleEditButtonClicked = data => {
+    this.props.history.push(`${routes.NASA_EDIT}/${data[0]}`);
   };
 
   handleDeleteFromCollection = data => {
-    const collectionRef = firebase.database().ref(`/collection/${data[0]}`);
-    collectionRef.remove();
+    const collectionItemRef = firebase.database().ref(`/collection/${data[0]}`);
+    collectionItemRef.remove();
   };
 
   render() {
@@ -58,6 +67,7 @@ class HomeContainer extends Component {
             collection={collection}
             onAddToFavorites={this.handleAddToFavorites}
             onDeleteFromFavorites={this.handleDeleteFromFavorites}
+            onEdit={this.handleEditButtonClicked}
             onDeleteFromCollection={this.handleDeleteFromCollection}
           />
         </Main>
@@ -82,4 +92,7 @@ HomeContainer.defaultProps = {
   onDeleteFromCollection: () => {},
 };
 
-export default compose(withScrollToTopOnMount)(HomeContainer);
+export default compose(
+  withRouter,
+  withScrollToTopOnMount,
+)(HomeContainer);

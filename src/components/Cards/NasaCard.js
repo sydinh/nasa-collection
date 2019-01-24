@@ -29,6 +29,9 @@ const NasaCard = props => (
             Like
           </Button>
         )}
+        <Button onClick={props.onEdit} className="button--default">
+          Edit
+        </Button>
         <Button onClick={props.onDeleteFromCollection} className="button--default">
           Delete
         </Button>
@@ -52,6 +55,7 @@ NasaCard.propTypes = {
   onAddToFavorites: PropTypes.func,
   onDeleteFromFavorites: PropTypes.func,
   onAddToCollection: PropTypes.func,
+  onEdit: PropTypes.func,
   onDeleteFromCollection: PropTypes.func,
 };
 
@@ -66,6 +70,7 @@ NasaCard.defaultProps = {
   onAddToFavorites: () => {},
   onDeleteFromFavorites: () => {},
   onAddToCollection: () => {},
+  onEdit: () => {},
   onDeleteFromCollection: () => {},
 };
 

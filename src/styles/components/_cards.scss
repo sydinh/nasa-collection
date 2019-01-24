@@ -11,7 +11,7 @@
     border-radius: $border-radius-base;
 
     &:before {
-      @include position(absolute, 0, 20px, 0, 20px);
+      @include position(absolute, 0, 0, 0, 0);
       content: '';
       z-index: z(under);
       box-shadow: 0 10px 20px 0 rgba(#888, 0.8);
@@ -25,7 +25,7 @@
   }
 
   &__caption {
-    min-height: 150px;
+    min-height: 130px;
     margin: 30px 0 0;
   }
 
@@ -47,7 +47,7 @@
   }
 
   &__caption-title {
-    @include truncate-multiline(30px, 2, $white);
+    @include truncate;
     margin: 12px 0;
     color: $black;
     font-size: $h3;
