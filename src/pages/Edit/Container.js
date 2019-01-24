@@ -35,9 +35,11 @@ class EditContainer extends Component {
     const { id } = this.props.match.params;
     const collectionItemRef = firebase.database().ref(`collection/${id}/data/0`);
     collectionItemRef.on('value', snapshot => {
-      const { title, description } = snapshot.val();
       if (this._isMounted) {
-        this.setState({ title, description });
+        this.setState({
+          title: snapshot.val().title || '',
+          description: snapshot.val().description || '',
+        });
       }
     });
   };
