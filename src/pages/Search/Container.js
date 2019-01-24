@@ -24,13 +24,6 @@ import {
 } from 'modules/collection';
 
 class SearchContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchTerm: '',
-    };
-  }
-
   static getDerivedStateFromProps(props) {
     if (props.isLoading) {
       document.body.classList.add('search-active');
@@ -38,6 +31,13 @@ class SearchContainer extends Component {
       document.body.classList.remove('search-active');
     }
     return null;
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: '',
+    };
   }
 
   componentDidMount() {

@@ -13,6 +13,8 @@ import Header from './components/Header';
 import List from './components/List';
 
 class HomeContainer extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,15 +24,22 @@ class HomeContainer extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.setState({ isLoading: true });
     this.fetchCollection();
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   fetchCollection = () => {
     const collectionRef = firebase.database().ref('collection');
-    collectionRef.on('value', snapshot =>
-      this.setState({ isLoading: false, collection: snapshot.val() }),
-    );
+    collectionRef.on('value', snapshot => {
+      if (this._isMounted) {
+        this.setState({ isLoading: false, collection: snapshot.val() });
+      }
+    });
   };
 
   handleAddToFavorites = data => {

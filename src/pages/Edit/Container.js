@@ -12,6 +12,8 @@ import Header from './components/Header';
 import Form from './components/Form';
 
 class EditContainer extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +23,12 @@ class EditContainer extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.fetchCollectionItem();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   fetchCollectionItem = () => {
@@ -29,7 +36,9 @@ class EditContainer extends Component {
     const collectionItemRef = firebase.database().ref(`collection/${id}/data/0`);
     collectionItemRef.on('value', snapshot => {
       const { title, description } = snapshot.val();
-      this.setState({ title, description });
+      if (this._isMounted) {
+        this.setState({ title, description });
+      }
     });
   };
 
