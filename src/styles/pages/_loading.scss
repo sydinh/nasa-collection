@@ -4,6 +4,8 @@
 
 .loading {
   @include flexbox-centering;
+  padding: 0;
+  overflow: hidden;
 
   &--search {
     min-height: 200px;
