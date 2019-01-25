@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
+import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import * as routes from 'constants/routes';
 import firebase from 'firebase.js';
@@ -128,5 +128,5 @@ const withRedux = connect(
 export default compose(
   withRouter,
   withRedux,
-  withScrollToTopOnMount,
+  withScroll,
 )(SearchContainer);

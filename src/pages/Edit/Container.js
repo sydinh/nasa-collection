@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
+import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import firebase from 'firebase.js';
 import * as routes from 'constants/routes';
@@ -74,5 +74,5 @@ class EditContainer extends Component {
 
 export default compose(
   withRouter,
-  withScrollToTopOnMount,
+  withScroll,
 )(EditContainer);
