@@ -24,11 +24,14 @@ import {
 } from 'modules/collection';
 
 class SearchContainer extends Component {
-  static getDerivedStateFromProps(props) {
+  static getDerivedStateFromProps(props, state) {
     if (props.isLoading) {
       document.body.classList.add('search-active');
     } else {
       document.body.classList.remove('search-active');
+    }
+    if (props.collection.items && state.searchTerm === '') {
+      props.clearSearchResult();
     }
     return null;
   }
