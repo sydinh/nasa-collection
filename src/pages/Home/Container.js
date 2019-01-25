@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
+import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import firebase from 'firebase.js';
 import * as routes from 'constants/routes';
@@ -103,5 +103,5 @@ HomeContainer.defaultProps = {
 
 export default compose(
   withRouter,
-  withScrollToTopOnMount,
+  withScroll,
 )(HomeContainer);

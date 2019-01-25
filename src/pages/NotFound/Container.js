@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
-import withScrollToTopOnMount from 'utils/withScrollToTopOnMount';
+import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import * as routes from 'constants/routes';
 
@@ -27,5 +27,5 @@ const NotFoundContainer = ({ history }) => {
 
 export default compose(
   withRouter,
-  withScrollToTopOnMount,
+  withScroll,
 )(NotFoundContainer);
