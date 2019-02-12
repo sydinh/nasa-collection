@@ -45,6 +45,7 @@ npm run build-dev
 - [react-redux](https://github.com/reduxjs/react-redux)
 - [react-router-dom](https://github.com/ReactTraining/react-router)
 - [redux](https://github.com/reduxjs/redux)
+- [redux-actions](https://github.com/redux-utilities/redux-actions)
 - [redux-thunk](https://github.com/reduxjs/redux-thunk)
 - [reselect](https://github.com/reduxjs/reselect)
 - [SASS](https://sass-lang.com/)
