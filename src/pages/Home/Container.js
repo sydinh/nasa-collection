@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import firebase from 'firebase.js';
-import * as routes from 'constants/routes';
+import * as ROUTES from 'constants/routes';
 
 import Header from './components/Header';
 import List from './components/List';
@@ -53,7 +53,7 @@ class HomeContainer extends Component {
   };
 
   handleEditButtonClicked = data => {
-    this.props.history.push(`${routes.NASA_EDIT}/${data[0]}`);
+    this.props.history.push(`${ROUTES.NASA_EDIT}/${data[0]}`);
   };
 
   handleDeleteFromCollection = data => {

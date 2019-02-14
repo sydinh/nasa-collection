@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import firebase from 'firebase.js';
-import * as routes from 'constants/routes';
+import * as ROUTES from 'constants/routes';
 
 import Header from './components/Header';
 import Form from './components/Form';
@@ -53,7 +53,7 @@ class EditContainer extends Component {
     const { id } = this.props.match.params;
     const collectionItemRef = firebase.database().ref(`/collection/${id}/data/0`);
     collectionItemRef.update({ title, description });
-    this.props.history.push(routes.HOME);
+    this.props.history.push(ROUTES.HOME);
     event.preventDefault();
   };
 
