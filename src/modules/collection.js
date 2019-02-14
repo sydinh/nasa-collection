@@ -12,7 +12,7 @@ const CLEAR_SEARCH_RESULT = 'collection/CLEAR_SEARCH_RESULT';
 const searchCollectionRequested = createAction(SEARCH_COLLECTION_REQUESTED);
 const searchCollectionSuccess = createAction(SEARCH_COLLECTION_SUCCESS);
 const searchCollectionFailure = createAction(SEARCH_COLLECTION_FAILURE);
-const clear = createAction(CLEAR_SEARCH_RESULT);
+const _clearSearchResult = createAction(CLEAR_SEARCH_RESULT);
 
 // Initial State
 const initialState = fromJS({
@@ -55,7 +55,7 @@ export const searchCollection = data => {
 };
 
 export const clearSearchResult = () => {
-  return dispatch => dispatch(clear());
+  return dispatch => dispatch(_clearSearchResult());
 };
 
 // Selectors
