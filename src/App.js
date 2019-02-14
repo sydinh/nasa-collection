@@ -7,7 +7,7 @@ import Search from 'pages/Search';
 import Edit from 'pages/Edit';
 import NotFound from 'pages/NotFound';
 import Footer from 'components/Footer';
-import * as routes from 'constants/routes';
+import * as ROUTES from 'constants/routes';
 
 class App extends Component {
   componentDidMount() {
@@ -18,9 +18,9 @@ class App extends Component {
     return (
       <Fragment>
         <Switch>
-          <Route exact path={routes.HOME} component={Home} />
-          <Route exact path={routes.NASA_SEARCH} component={Search} />
-          <Route exact path={`${routes.NASA_EDIT}/:id`} component={Edit} />
+          <Route exact path={ROUTES.HOME} component={Home} />
+          <Route exact path={ROUTES.NASA_SEARCH} component={Search} />
+          <Route exact path={`${ROUTES.NASA_EDIT}/:id`} component={Edit} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

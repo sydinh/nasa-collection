@@ -5,7 +5,7 @@ import { compose } from 'redux';
 
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
-import * as routes from 'constants/routes';
+import * as ROUTES from 'constants/routes';
 
 const NotFoundContainer = ({ history }) => {
   return (
@@ -17,7 +17,7 @@ const NotFoundContainer = ({ history }) => {
         <h1 className="not-found__title">404</h1>
         <h4 className="not-found__subtitle">Sorry, page not found!</h4>
         <p className="not-found__desc">It seems like you are heading in the wrong direction</p>
-        <h6 onClick={() => history.push(routes.HOME)} className="not-found__link">
+        <h6 onClick={() => history.push(ROUTES.HOME)} className="not-found__link">
           Go to the homepage
         </h6>
       </Main>

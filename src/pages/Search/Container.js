@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
-import * as routes from 'constants/routes';
+import * as ROUTES from 'constants/routes';
 import firebase from 'firebase.js';
 
 import Header from './components/Header';
@@ -64,7 +64,7 @@ class SearchContainer extends Component {
   handleAddToCollection = data => {
     const collectionRef = firebase.database().ref('collection');
     collectionRef.push(data);
-    setTimeout(() => this.props.history.push(routes.HOME), 500);
+    setTimeout(() => this.props.history.push(ROUTES.HOME), 500);
   };
 
   render() {
