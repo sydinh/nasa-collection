@@ -21,6 +21,18 @@ const prodConfig = {
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-const firebase = app.initializeApp(config);
+class Firebase {
+  constructor() {
+    app.initializeApp(config);
+    this.database = app.database();
+    this.collection = 'collection';
+  }
 
-export default firebase;
+  getCollection = () => this.database.ref(this.collection);
+
+  getCollectionItem = id => this.database.ref(`/${this.collection}/${id}`);
+
+  getCollectionItemData = id => this.database.ref(`/${this.collection}/${id}/data/0`);
+}
+
+export default Firebase;

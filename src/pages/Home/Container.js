@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
-import firebase from 'firebase.js';
+import { withFirebase } from 'firebase';
 import * as ROUTES from 'constants/routes';
 
 import Header from './components/Header';
@@ -34,7 +34,7 @@ class HomeContainer extends Component {
   }
 
   fetchCollection = () => {
-    const collectionRef = firebase.database().ref('collection');
+    const collectionRef = this.props.firebase.getCollection();
     collectionRef.on('value', snapshot => {
       if (this._isMounted) {
         this.setState({ isLoading: false, collection: snapshot.val() });
@@ -43,12 +43,12 @@ class HomeContainer extends Component {
   };
 
   handleAddToFavorites = data => {
-    const collectionItemRef = firebase.database().ref(`/collection/${data[0]}`);
+    const collectionItemRef = this.props.firebase.getCollectionItem(data[0]);
     collectionItemRef.update({ favorite: true });
   };
 
   handleDeleteFromFavorites = data => {
-    const collectionItemRef = firebase.database().ref(`/collection/${data[0]}`);
+    const collectionItemRef = this.props.firebase.getCollectionItem(data[0]);
     collectionItemRef.update({ favorite: false });
   };
 
@@ -57,7 +57,7 @@ class HomeContainer extends Component {
   };
 
   handleDeleteFromCollection = data => {
-    const collectionItemRef = firebase.database().ref(`/collection/${data[0]}`);
+    const collectionItemRef = this.props.firebase.getCollectionItem(data[0]);
     collectionItemRef.remove();
   };
 
@@ -104,4 +104,5 @@ HomeContainer.defaultProps = {
 export default compose(
   withRouter,
   withScroll,
+  withFirebase,
 )(HomeContainer);
