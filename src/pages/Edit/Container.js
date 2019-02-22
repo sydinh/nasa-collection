@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
-import firebase from 'firebase.js';
+import { withFirebase } from 'firebase';
 import * as ROUTES from 'constants/routes';
 
 import Header from './components/Header';
@@ -33,7 +33,7 @@ class EditContainer extends Component {
 
   fetchCollectionItem = () => {
     const { id } = this.props.match.params;
-    const collectionItemRef = firebase.database().ref(`collection/${id}/data/0`);
+    const collectionItemRef = this.props.firebase.getCollectionItemData(id);
     collectionItemRef.on('value', snapshot => {
       if (this._isMounted) {
         this.setState({
@@ -51,7 +51,7 @@ class EditContainer extends Component {
   handleSubmit = event => {
     const { title, description } = this.state;
     const { id } = this.props.match.params;
-    const collectionItemRef = firebase.database().ref(`/collection/${id}/data/0`);
+    const collectionItemRef = this.props.firebase.getCollectionItemData(id);
     collectionItemRef.update({ title, description });
     this.props.history.push(ROUTES.HOME);
     event.preventDefault();
@@ -75,4 +75,5 @@ class EditContainer extends Component {
 export default compose(
   withRouter,
   withScroll,
+  withFirebase,
 )(EditContainer);

@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import withScroll from 'utils/withScroll';
 import Main from 'components/Main';
 import * as ROUTES from 'constants/routes';
-import firebase from 'firebase.js';
+import { withFirebase } from 'firebase';
 
 import Header from './components/Header';
 import Form from './components/Form';
@@ -62,7 +62,7 @@ class SearchContainer extends Component {
   };
 
   handleAddToCollection = data => {
-    const collectionRef = firebase.database().ref('collection');
+    const collectionRef = this.props.firebase.getCollection();
     collectionRef.push(data);
     setTimeout(() => this.props.history.push(ROUTES.HOME), 500);
   };
@@ -132,4 +132,5 @@ export default compose(
   withRouter,
   withRedux,
   withScroll,
+  withFirebase,
 )(SearchContainer);
