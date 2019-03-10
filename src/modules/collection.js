@@ -44,19 +44,15 @@ export default (state = initialState, action) => {
 };
 
 // Action Creators
-export const searchCollection = data => {
-  return dispatch => {
-    dispatch(searchCollectionRequested());
-    axios
-      .get(`${process.env.API_URL}search?q=${data}`)
-      .then(response => dispatch(searchCollectionSuccess(response.data.collection)))
-      .catch(error => dispatch(searchCollectionFailure(error.response.data)));
-  };
+export const searchCollection = data => dispatch => {
+  dispatch(searchCollectionRequested());
+  axios
+    .get(`${process.env.API_URL}search?q=${data}`)
+    .then(response => dispatch(searchCollectionSuccess(response.data.collection)))
+    .catch(error => dispatch(searchCollectionFailure(error.response.data)));
 };
 
-export const clearSearchResult = () => {
-  return dispatch => dispatch(_clearSearchResult());
-};
+export const clearSearchResult = () => dispatch => dispatch(_clearSearchResult());
 
 // Selectors
 export const getCollection = state => state.get('collection');
