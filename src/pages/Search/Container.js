@@ -38,6 +38,7 @@ class SearchContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.inputRef = React.createRef();
     this.state = {
       searchTerm: '',
     };
@@ -45,6 +46,7 @@ class SearchContainer extends Component {
 
   componentDidMount() {
     this.props.clearSearchResult();
+    this.inputRef.current.focus();
   }
 
   componentWillUnmount() {
@@ -82,6 +84,7 @@ class SearchContainer extends Component {
             searchTerm={searchTerm}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            inputRef={this.inputRef}
           />
           <List
             searchTerm={searchTerm}

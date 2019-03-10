@@ -11,6 +11,7 @@ const Form = props => (
       onChange={props.handleChange}
       placeholder="Type something to search..."
       className="search__form-control"
+      inputRef={props.inputRef}
     />
   </form>
 );

@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Input = props => (
-  <input
-    type={props.type}
-    name={props.name}
-    value={props.value}
-    onChange={props.onChange}
-    placeholder={props.placeholder}
-    className={`form-control ${props.className}`}
-  />
-);
+class Input extends Component {
+  render() {
+    return (
+      <input
+        type={this.props.type}
+        name={this.props.name}
+        value={this.props.value}
+        onChange={this.props.onChange}
+        placeholder={this.props.placeholder}
+        className={`form-control ${this.props.className}`}
+        ref={this.props.inputRef}
+      />
+    );
+  }
+}
 
 Input.propTypes = {
   type: PropTypes.string,
@@ -19,6 +24,7 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   className: PropTypes.string,
+  inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]),
 };
 
 Input.defaultProps = {
@@ -27,6 +33,7 @@ Input.defaultProps = {
   value: '',
   placeholder: 'placeholder',
   className: '',
+  inputRef: '',
 };
 
 export default Input;
