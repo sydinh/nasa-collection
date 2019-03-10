@@ -16,6 +16,7 @@ class EditContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.inputRef = React.createRef();
     this.state = {
       title: '',
       description: '',
@@ -25,6 +26,7 @@ class EditContainer extends Component {
   componentDidMount() {
     this._isMounted = true;
     this.fetchCollectionItem();
+    this.inputRef.current.focus();
   }
 
   componentWillUnmount() {
@@ -65,7 +67,12 @@ class EditContainer extends Component {
         </Helmet>
         <Main page="nasa-edit">
           <Header />
-          <Form {...this.state} onChange={this.handleChange} onSubmit={this.handleSubmit} />
+          <Form
+            {...this.state}
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+            inputRef={this.inputRef}
+          />
         </Main>
       </Fragment>
     );

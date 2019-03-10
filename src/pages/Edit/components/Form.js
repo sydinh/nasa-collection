@@ -15,6 +15,7 @@ const Form = props => {
           value={props.title}
           onChange={props.onChange}
           placeholder={props.title}
+          inputRef={props.inputRef}
         />
       </div>
       <div className="nasa-edit__form-item">
