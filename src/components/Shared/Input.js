@@ -24,7 +24,7 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   className: PropTypes.string,
-  inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]),
+  inputRef: PropTypes.object,
 };
 
 Input.defaultProps = {
@@ -33,7 +33,7 @@ Input.defaultProps = {
   value: '',
   placeholder: 'placeholder',
   className: '',
-  inputRef: '',
+  inputRef: null,
 };
 
 export default Input;
