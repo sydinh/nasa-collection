@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ import * as ROUTES from 'constants/routes';
 import Header from './components/Header';
 import List from './components/List';
 
-class HomeContainer extends Component {
+class HomeContainer extends PureComponent {
   _isMounted = false;
 
   constructor(props) {
