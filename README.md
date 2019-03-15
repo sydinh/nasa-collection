@@ -48,6 +48,7 @@ npm run build-dev
 - [redux-actions](https://github.com/redux-utilities/redux-actions)
 - [redux-thunk](https://github.com/reduxjs/redux-thunk)
 - [reselect](https://github.com/reduxjs/reselect)
+- [why-did-you-update](https://github.com/maicki/why-did-you-update)
 - [SASS](https://sass-lang.com/)
 - [ducks-modular-redux](https://github.com/erikras/ducks-modular-redux)
 - [html5-boilerplate](https://github.com/h5bp/html5-boilerplate)
