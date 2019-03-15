@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Input from 'components/Shared/Input';
 import Button from 'components/Shared/Button';
 
-const Form = props => {
+const Form = memo(props => {
   const isInvalid = props.title === '' || props.description === '';
 
   return (
@@ -32,6 +32,6 @@ const Form = props => {
       </Button>
     </form>
   );
-};
+});
 
 export default Form;

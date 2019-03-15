@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import NasaCard from 'components/Cards/NasaCard';
 import { imgPlaceholder } from 'utils/imgUtil';
 
-const Item = props => {
+const Item = memo(props => {
   const links = props.data[1].links ? props.data[1].links[0] : [];
   const imgSrc = imgPlaceholder(links.href);
 
@@ -24,6 +24,6 @@ const Item = props => {
       />
     </div>
   );
-};
+});
 
 export default Item;

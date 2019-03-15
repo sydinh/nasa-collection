@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Input from 'components/Shared/Input';
 
-const Form = props => (
+const Form = memo(props => (
   <form onSubmit={props.handleSubmit}>
     <Input
       type="search"
@@ -14,6 +14,6 @@ const Form = props => (
       inputRef={props.inputRef}
     />
   </form>
-);
+));
 
 export default Form;

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from 'components/Shared/Button';
 
-const NasaCard = props => (
+const NasaCard = memo(props => (
   <figure className="nasa-card">
     {props.imgSrc && (
       <div className="nasa-card__img-container">
@@ -42,7 +42,7 @@ const NasaCard = props => (
       </Button>
     )}
   </figure>
-);
+));
 
 NasaCard.propTypes = {
   imgSrc: PropTypes.string,

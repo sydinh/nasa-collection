@@ -1,7 +1,7 @@
-import React, { Children } from 'react';
+import React, { Children, memo } from 'react';
 import PropTypes from 'prop-types';
 
-const Button = props => (
+const Button = memo(props => (
   <button
     type={props.type}
     onClick={props.onClick}
@@ -10,7 +10,7 @@ const Button = props => (
   >
     {Children.toArray(props.children)}
   </button>
-);
+));
 
 Button.propTypes = {
   type: PropTypes.string,
