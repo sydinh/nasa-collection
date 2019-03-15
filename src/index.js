@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReactReduxProvider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import whyDidYouUpdate from 'why-did-you-update';
 import 'styles/main.scss';
 import store from 'configureStore';
 import history from 'utils/history';
@@ -20,3 +21,7 @@ ReactDOM.render(
   </ReactReduxProvider>,
   document.getElementById('root'),
 );
+
+if (process.env.NODE_ENV !== 'production') {
+  whyDidYouUpdate(React);
+}
