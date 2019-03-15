@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Main from 'components/Main';
 
-const Loading = ({ isSearching }) => {
+const Loading = memo(({ isSearching }) => {
   const loadingClass = classNames({
     loading: true,
     'loading--search': isSearching,
@@ -15,7 +15,7 @@ const Loading = ({ isSearching }) => {
       <div className="loading__dot-floating" />
     </Main>
   );
-};
+});
 
 Loading.propTypes = {
   isSearching: PropTypes.bool,

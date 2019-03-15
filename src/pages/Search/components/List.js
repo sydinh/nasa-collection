@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Loading from 'components/Loading';
 import { displayPluralOrSingular } from 'utils/stringUtil';
 
 import Item from './Item';
 
-const List = props => {
+const List = memo(props => {
   if (props.isLoading) return <Loading isSearching />;
 
   if (props.error) return <p className="search__invalid-feedback">{props.error.reason}</p>;
@@ -34,6 +34,6 @@ const List = props => {
       </div>
     </div>
   );
-};
+});
 
 export default List;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Item from './Item';
 
-const List = props => {
+const List = memo(props => {
   if (props.isLoading)
     return <section className="home__instruction">Loading the collection...</section>;
 
@@ -25,6 +25,6 @@ const List = props => {
       ))}
     </div>
   );
-};
+});
 
 export default List;

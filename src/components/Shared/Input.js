@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
-const Input = props => (
+const Input = memo(props => (
   <input
     type={props.type}
     name={props.name}
@@ -11,7 +11,7 @@ const Input = props => (
     className={`form-control ${props.className}`}
     ref={props.inputRef}
   />
-);
+));
 
 Input.propTypes = {
   type: PropTypes.string,
