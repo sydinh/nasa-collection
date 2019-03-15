@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -11,7 +11,7 @@ import * as ROUTES from 'constants/routes';
 import Header from './components/Header';
 import Form from './components/Form';
 
-class EditContainer extends Component {
+class EditContainer extends PureComponent {
   _isMounted = false;
 
   constructor(props) {
